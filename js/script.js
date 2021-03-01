@@ -7,14 +7,31 @@ const personalMovieDB = {
     ganres:[],
     privat: false
 };
-const a = prompt('Один из последних просмотренных фильмов?', ''),
-      b = prompt('На сколько вы его оцените?', ''),
-      c = prompt('Один из последних просмотренных фильмов?', ''),
-      d = prompt('На сколько вы его оцените?', ''),
-      e = prompt('Помните актера?', ''),
-      f = prompt('Оценка актрера?', '');
 
-      personalMovieDB.movies[a] = b;
-      personalMovieDB.movies[c] = d;
-      personalMovieDB.actors[e] = f;
+    for(let i = 0; i < 2; i++){
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+              b = prompt('На сколько вы его оцените?', '');
+              
+              if(a != null && b != null && a !=''&& b != '' && a.length <50){
+                personalMovieDB.movies[a] = b;
+                console.log('done');
+              }else{
+                  console.log('Error');
+                  i--;
+              }
+              
+        }
+        if(personalMovieDB.count < 10){
+            console.log("Просмотрено довольно мало фильмов");     
+          }
+          else if(personalMovieDB.count <= 10 && personalMovieDB.count < 30 ){
+              console.log("Вы классический зритель");
+          }
+          else if(personalMovieDB.count >= 30){
+              console.log("Вы классический зритель");
+          }
+          else{
+            console.log("Произошла ошибка");
+          }
+      
       console.log(personalMovieDB);
