@@ -1,4 +1,13 @@
-const numberOfFiilms =+prompt('Сколько фильмов Вы уже посмотрели?', '') ;
+"use strict";
+let numberOfFiilms;
+
+function start(){
+     numberOfFiilms =+prompt('Сколько фильмов Вы уже посмотрели?', '') ;
+     while( numberOfFiilms == '' || numberOfFiilms == null || isNaN(numberOfFiilms)){
+        numberOfFiilms =+prompt('Сколько фильмов Вы уже посмотрели?', '') ;
+      }
+}
+start();
 
 const personalMovieDB = {
     count:numberOfFiilms,
@@ -7,7 +16,7 @@ const personalMovieDB = {
     ganres:[],
     privat: false
 };
-
+function rememberMyFilms(){
     for(let i = 0; i < 2; i++){
         const a = prompt('Один из последних просмотренных фильмов?', ''),
               b = prompt('На сколько вы его оцените?', '');
@@ -21,6 +30,11 @@ const personalMovieDB = {
               }
               
         }
+}
+rememberMyFilms();
+    
+          function detectPersonalLevel(){
+            
         if(personalMovieDB.count < 10){
             console.log("Просмотрено довольно мало фильмов");     
           }
@@ -33,5 +47,21 @@ const personalMovieDB = {
           else{
             console.log("Произошла ошибка");
           }
+          }
+          detectPersonalLevel();
       
       console.log(personalMovieDB);
+      function showMyDB(hidden){
+          if(!hidden){
+            console.log(numberOfFiilms);
+          }
+      }
+      showMyDB(personalMovieDB.privat);
+
+      function writeYourGenres (){
+        for(let i = 1; i<=3; i++){
+            const ganre=prompt(`Ваш любимый жанр под номером ${i}`);
+            personalMovieDB.ganres[i-1] = ganre;
+        }
+      }
+      writeYourGenres();
